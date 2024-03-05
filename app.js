@@ -88,12 +88,7 @@ app.get('/logout', (req, res) => {
 });
 
 
-function ensureAuthenticated(req,res,next){
-   if(req.isAuthenticated()){
-     return next();
-   }
-   res.redirect('/login');
-}
+
 
 
 
@@ -106,4 +101,9 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 /*
  * ensureAuthenticated Callback Function
 */
-
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
